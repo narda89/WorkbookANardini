@@ -15,6 +15,7 @@ public class StringTest02 {
 
         if (args.length == 3) {
             for ( int i  = 0; i < 3; i++) {
+
                 if (args[i].length() == 0 ) {
                     System.out.println("La stringa immessa è una stringa vuota");
                 } else {
@@ -37,7 +38,7 @@ public class StringTest02 {
             }
 
         } else {
-            
+
             System.out.println("Attenzione, il programma richiede in input esattamente 3 stringhe. Hai inserito un " +
                     "numero di stringhe differente da quello richiesto");
         }
