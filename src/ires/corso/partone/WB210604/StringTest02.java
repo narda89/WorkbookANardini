@@ -18,17 +18,26 @@ public class StringTest02 {
                 if (args[i].length() == 0 ) {
                     System.out.println("La stringa immessa è una stringa vuota");
                 } else {
+
+                    String stringaInput = args[i];                          // Salva args[i] all'interno della Stringa stringaInput
+                    int lunghezzaStringa = args[i].length();                // Salva la lunghezza di args[i] in una variabile int
+                    char firstChar = args[i].charAt(0);                     // Salva il primo carattere di args[i] in una variabile char
+                    char lastChar = args[i].charAt(args[i].length() - 1);   // Salva l'ultimo carattere di args[i] in una variabile char
+
+
                     String message  = String.format("La stringa %s ha lunghezza %s, comincia per %c e termina per %c",
-                            args[i],                                //stampa il contenuto di args[i], ovvero la stringa n-esima
-                            args[i].length(),                       //stampa la lunghezza dell' n-esimo argomento di args
-                            args[i].charAt(0),                      //stampa il primo carattere dell'n-esimo argomento di args
-                            args[i].charAt(args[i].length() - 1) ); //stampa l'ultimo carattere dell'n-esimo args
+                            stringaInput,                            //stampa il contenuto di args[i], ovvero la stringa n-esima
+                            lunghezzaStringa,                        //stampa la lunghezza dell' n-esimo argomento di args
+                            firstChar,                               //stampa il primo carattere dell'n-esimo argomento di args
+                            lastChar );                              //stampa l'ultimo carattere dell'n-esimo args
 
                     System.out.println(message);
+
                 }
             }
 
         } else {
+            
             System.out.println("Attenzione, il programma richiede in input esattamente 3 stringhe. Hai inserito un " +
                     "numero di stringhe differente da quello richiesto");
         }
