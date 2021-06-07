@@ -22,9 +22,12 @@ public class InputTest {
     public static void main(String[] args) {
         System.out.println("Di quale figura geometrica si vuole calcolare l'area? Inserire il numero desiderato\n" +
                             "1. Quadrato\n" + "2. Trapezio\n" + "3. Triangolo\n");
+
         Scanner s = new Scanner(System.in);
         int switchCase = s.nextInt();
+
         switch (switchCase) {
+
             case 1:
                 System.out.println("Inserire valore lato:");
                 Scanner scan1 = new Scanner(System.in);
@@ -33,6 +36,7 @@ public class InputTest {
                 System.out.println("Area triangolo: " + aSquare);
 
                 break;
+
             case 2:
                 //chiede  dati per area trapezio
                 System.out.println("Inserire valori B, b, h:");
@@ -44,6 +48,7 @@ public class InputTest {
                 System.out.println("Area trapezio: " + aTrap);
 
                 break;
+
             case 3:
                 //chiede dati per area triangolo
                 System.out.println("Inserire valori base e altezza:");
@@ -54,10 +59,13 @@ public class InputTest {
                 System.out.println("Area triangolo: " + aTriangle);
 
                 break;
+
+            default:
+                //il programma non ha riconosciuto l'input
+                System.out.println("Input non valido");
+
+                return;
         }
 
-        double aTrap = Trapezio.computeArea(0, 0, 0);
-        double aSquare = Quadrato.computeArea(5);
-        double aTriangle  = Triangolo.computeArea(0,0);
     }
 }
