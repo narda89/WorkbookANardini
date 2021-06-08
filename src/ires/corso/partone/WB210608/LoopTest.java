@@ -68,7 +68,7 @@ public class LoopTest {
 
     }
 
-    // nb: funzione chiara tanto quanto l'aramaico antico. E non parlo aramaico. Però funziona e bon
+
 
     public static void TestLoopThree() {
         int i, j, k, n;
