@@ -19,9 +19,8 @@ public class TestArray {
         int[] prova = {1, 1, 1, 5, 2, 2, 3, -3, 3, 5, 5, 5, 2, 4, 1, 7};
 
         System.out.println(Arrays.toString(prova));
-        String pulito = removeDuplicates(prova);
-        System.out.println(pulito);
-        int[] finale = stringToArrayInt(pulito);
+
+        int[] finale = removeDuplicates(prova);
         System.out.println(Arrays.toString(finale));
     }
 
@@ -40,7 +39,7 @@ public class TestArray {
     }
 
     //prende l'array di int e trascrive i numeri su una stringa separandoli con '|'; non trascrive i doppioni
-    public static String removeDuplicates(int[] arrayWithDuplicates) {
+    public static String removeDuplicatesToString(int[] arrayWithDuplicates) {
 
         String stringa = new String();
         boolean repFound = false;
@@ -66,11 +65,17 @@ public class TestArray {
         int[] finale = new int[splitted.length];
 
         for( int i = 0; i < splitted.length; i++ ) {
-            finale[i] = Integer.parseInt( splitted[i] );
+            finale[i] = Integer.parseInt(splitted[i]);
         }
 
         return finale;
     }
+
+    public static int[] removeDuplicates(int[] arrayWithDuplicates) {
+        return stringToArrayInt(removeDuplicatesToString(arrayWithDuplicates));
+    }
+
 }
+
 
 
