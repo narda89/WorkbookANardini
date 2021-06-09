@@ -16,19 +16,20 @@ public class TestArray {
         System.out.printf("L'indice è: %d\n", indice);
         */
 
-        int[] prova = {1 , 55, 66, 66, 12, 66};
+        int[] prova = {1, 1, 1, 5, 2, 2, 3, -3, 3, 5, 5, 5, 2, 4, 1, 7};
+
         System.out.println(Arrays.toString(prova));
-        int[] pulito = removeDuplicates(prova);
-        System.out.println(Arrays.toString(pulito));
-        int[] finale = removeSpecial(pulito);
+        String pulito = removeDuplicates(prova);
+        System.out.println(pulito);
+        int[] finale = stringToArrayInt(pulito);
         System.out.println(Arrays.toString(finale));
     }
 
-    public static int posizioneNumero (String s, int n) {
+    public static int posizioneNumero(String s, int n) {
 
         char[] sChar = s.toCharArray();
 
-        for ( int i = 0 ; i < s.length(); i++) {
+        for (int i = 0; i < s.length(); i++) {
             if (Character.getNumericValue(sChar[i]) == n) {
                 System.out.printf("Il valore %d sta alla %d - esima posizione nella stringa\n", n, i);
                 return i;
@@ -38,38 +39,37 @@ public class TestArray {
         return -1;
     }
 
-    //restituisce un secondo array uguale all'array fornito in ingresso, ma dal quale son stati rimossi eventuali duplicati
-    public static int[] removeDuplicates(int[] arrayWithDuplicates) {
+    //prende l'array di int e trascrive i numeri su una stringa separandoli con '|'; non trascrive i doppioni
+    public static String removeDuplicates(int[] arrayWithDuplicates) {
 
-        int[] arrayProvv = arrayWithDuplicates;
+        String stringa = new String();
+        boolean repFound = false;
+        stringa += arrayWithDuplicates[1] + "|";
 
-        for (int i = 0; i < arrayProvv.length; i++) {
-            for(int j = i + 1; j < arrayWithDuplicates.length; j++){
-                if (arrayWithDuplicates[j] == arrayProvv[i]) {
-                    arrayProvv[i] = -1;
+        for (int i = 1; i < arrayWithDuplicates.length; i++, repFound = false) {
+            for (int j = i - 1; j >= 0; j--) {
+                if (arrayWithDuplicates[j] == arrayWithDuplicates[i]) {
+                    repFound = true;
                     break;
                 }
             }
-
+            if (!repFound) {
+                stringa += arrayWithDuplicates[i] + "|";
+            }
         }
-        return arrayProvv;
+        return stringa;
     }
-    public static int[] removeSpecial(int[] arrayProvv) {
-        int j = 0;
-        for (int i = 0; i < arrayProvv.length; i++) {
-            if(arrayProvv[i] == -1) {
-                j++;
-            }
-        }
-        int[] arrayFinal = new int[arrayProvv.length - j];
-        for (int i= 0, k = 0; i < arrayProvv.length; i++) {
-            if(arrayProvv[i] != -1) {
-                arrayFinal[k]= arrayProvv[i];
-                k++;
-            }
+
+    //legge la stringa formattata con il separatore "|" e inserisce gli int che rileva dentro ad un array
+    public static int[] stringToArrayInt(String stringInput) {
+        String[] splitted = stringInput.split("\\|");
+        int[] finale = new int[splitted.length];
+
+        for( int i = 0; i < splitted.length; i++ ) {
+            finale[i] = Integer.parseInt( splitted[i] );
         }
 
-        return arrayFinal;
+        return finale;
     }
 }
 
