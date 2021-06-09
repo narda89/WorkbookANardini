@@ -22,6 +22,7 @@ public class TestArray {
 
         int[] finale = removeDuplicates(prova);
         System.out.println(Arrays.toString(finale));
+        removeDuplicates2(prova);
     }
 
     public static int posizioneNumero(String s, int n) {
@@ -75,7 +76,47 @@ public class TestArray {
         return stringToArrayInt(removeDuplicatesToString(arrayWithDuplicates));
     }
 
+    public static int[] removeDuplicates2(int[] arrayWithDuplicates) {
+
+        // crea vettore provvisorio sorted delle stesse dimensioni di quello che viene passato al metodo
+        int[] sorted = new int[arrayWithDuplicates.length];
+        sorted[0] = arrayWithDuplicates[0];
+        int doppione = 0;       //contatore delle occorrenze di doppioni;
+        boolean[] flag = new boolean[arrayWithDuplicates.length]; //vettore di controllo, lo si mette in AND col vettore che si crea col for seguente
+
+        for ( int i = 1 ; i < (arrayWithDuplicates.length); i++ ) {
+            flag[i] = false;
+            for (int j = i; j >= 0; j--) {
+                if (arrayWithDuplicates[i] == sorted[j]) {
+                    doppione++;
+                    flag[i] = true;
+                    break;
+                }
+            }
+            if (!flag[i]) {
+                sorted[i]=arrayWithDuplicates[i];           //scrive sul vettore nuovo solo se non è stato rilevato doppione nel ciclo for precedente
+            }
+        }
+
+        System.out.printf("%d\n", doppione);            //stampe di controllo
+        System.out.println(Arrays.toString(sorted));    //stampe di controllo
+        System.out.println(Arrays.toString(flag));      //stampe di controllo
+
+        int[] finale = new int[arrayWithDuplicates.length - doppione];  //piu piccolo di quello iniziale di un valore pari al n. di doppioni
+        for (int i = 0, j = 0; i < arrayWithDuplicates.length; i++) {
+            if (!flag[i]) {                         //ci scrive solo se il vettore di controllo è falso (per quella posizione nn era stato rilevato doppione
+                finale[j] = sorted[i];
+                j++;
+            }
+        }
+
+        System.out.println(Arrays.toString(finale));
+        return finale;
+    }
+
 }
+
+
 
 
 
