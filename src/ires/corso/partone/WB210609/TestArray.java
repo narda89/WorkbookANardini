@@ -10,22 +10,22 @@ public class TestArray {
         String theString = theScan.nextLine();
         System.out.println("Inserire la cifra singola che si vuole cercare nel numero: ");
         int theNum = theScan.nextInt();
-        posizioneNumero(theString, theNum);
-
+        int indice = posizioneNumero(theString, theNum);
+        System.out.printf("L'indice è: %d\n", indice);
     }
 
-    public static boolean posizioneNumero (String s, int n) {
+    public static int posizioneNumero (String s, int n) {
 
         char[] sChar = s.toCharArray();
 
         for ( int i = 0 ; i < s.length(); i++) {
             if (Character.getNumericValue(sChar[i]) == n) {
-                System.out.printf("Il valore %d sta alla %d - esima posizione nella stringa", n, i);
-                return true;
+                System.out.printf("Il valore %d sta alla %d - esima posizione nella stringa\n", n, i);
+                return i;
             }
         }
         System.out.println("Impossibile trovare numero inserito nella stringa");
-        return false;
+        return -1;
     }
 }
 
