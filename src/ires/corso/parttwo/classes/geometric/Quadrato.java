@@ -15,6 +15,12 @@ public class Quadrato extends MasterShape {
         return this.lato * 4;
     }
 
+    public boolean isASquare (double lato) {
+        if ( !(lato > 0) )
+            return false;
+        return true;
+    }
+
     // costruttore
     public Quadrato (double lato) {
         this.lato = lato;
@@ -29,3 +35,4 @@ public class Quadrato extends MasterShape {
         this.lato = lato;
     }
 }
+

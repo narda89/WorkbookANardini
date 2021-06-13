@@ -18,11 +18,11 @@ public class TestMasterShape {
         System.out.printf("L'area del quadrato è pari a %f.\n", q3.computeArea());
         System.out.printf("Il perimetro del quadrato è pari a %f.\n", q3.computePerimeter());
 
-        Triangolo t1 = new Triangolo(1.0, 1.5, 1.5, 2.0);
+        Triangolo t1 = new Triangolo(2.0, 4.0, 4.5);
         System.out.printf("L'area del triangolo è pari a %f.\n", t1.computeArea());
         System.out.printf("Il perimetro del triangolo è pari a %f.\n", t1.computePerimeter());
 
-        Triangolo t2 = new Triangolo(2.0, 3.0, 3.0, 2.0);
+        Triangolo t2 = new Triangolo(2.0, 3.0, 3.0);
         System.out.printf("L'area del triangolo è pari a %f.\n", t2.computeArea());
         System.out.printf("Il perimetro del triangolo è pari a %f.\n", t2.computePerimeter());
 
@@ -54,6 +54,24 @@ public class TestMasterShape {
         }
 
         System.out.printf("La somma dei perimetri è pari a: %f.\n", sommaP);
+
+        // prova metodi Test
+        if(Triangolo.isATriangle(5,4,2))
+            System.out.println("Sì, è un triangolo");
+        else
+            System.out.println("No, non è un triangolo");
+
+        if(Trapezio.isATrapezio(50.0,30.0,28.72281323269, 28.72281323269, 35.0 ))
+            System.out.println("Sì, è un trapezio");
+        else
+            System.out.println("No, non è un trapezio");
+
+        // ipotesi di sistema che controlla se l'input è valido:
+        // - prende i valori di input;
+        // - applica i metodi di controllo della figura geom. in questione
+        // - se il controllo dà esito positivo, istanzia un oggetto della figura in questione,
+        //   altrimenti dà picche.
+
     }
 }
 
