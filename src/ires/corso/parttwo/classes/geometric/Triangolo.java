@@ -3,6 +3,7 @@ package ires.corso.parttwo.classes.geometric;
 public class Triangolo extends MasterShape {
 
     // nb: base per convenzione coincide con lato1, l'altezza è quella riferita a detta base
+    private double altezza;
     private double lato1;
     private double lato2;
     private double lato3;
@@ -20,8 +21,8 @@ public class Triangolo extends MasterShape {
         return this.lato1 + this.lato2 + this.lato3;
     }
 
-    // computeArea e computePerimeter sono anche stati implementati in forma static
-    // in quanto usati nel metodo di controllo isATrapezio della classe trapezio
+    // computeArea e computePerimeter sono anche stati implementati in forma static in quanto usati nel metodo di controllo
+    // isATrapezio della classe trapezio
     public static double computePerimeter(double lato1, double lato2, double lato3) {
         return lato1 + lato2 + lato3;
     }
@@ -32,7 +33,7 @@ public class Triangolo extends MasterShape {
     }
 
     // funzione che controlla se i valori forniti in input sono compatibili con un triangolo
-    public static boolean isATriangle(double lato1, double lato2, double lato3) {
+    public static boolean isATriangle(double lato1, double lato2, double lato3, double altezza) {
 
         //controllo preventivo
         if ( !(lato1 > 0 && lato2 > 0 && lato3 > 0) )
@@ -50,17 +51,31 @@ public class Triangolo extends MasterShape {
             if ( lato[i] >= computePerimeter(lato1, lato2, lato3)/2 )
                 return false;
         }
+
+        if ( Math.abs((2*(Triangolo.computeArea(lato1, lato2, lato3)) / (lato1) ) - altezza) > 0.01) {
+            return false;
+        }
+
         return true;
     }
 
     // costruttore
-    public Triangolo (double lato1, double lato2, double lato3) {
+    public Triangolo (double lato1, double lato2, double lato3, double altezza) {
         this.lato1 = lato1;
         this.lato2 = lato2;
         this.lato3 = lato3;
+        this.altezza = altezza;
     }
 
     // metodi get - set
+    public double getAltezza() {
+        return altezza;
+    }
+
+    public void setAltezza(double altezza) {
+        this.altezza = altezza;
+    }
+
     public double getLato1() {
         return lato1;
     }
@@ -86,3 +101,4 @@ public class Triangolo extends MasterShape {
     }
 
 }
+

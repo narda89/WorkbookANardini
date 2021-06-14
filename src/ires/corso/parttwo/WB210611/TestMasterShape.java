@@ -18,11 +18,11 @@ public class TestMasterShape {
         System.out.printf("L'area del quadrato è pari a %f.\n", q3.computeArea());
         System.out.printf("Il perimetro del quadrato è pari a %f.\n", q3.computePerimeter());
 
-        Triangolo t1 = new Triangolo(2.0, 4.0, 4.5);
+        Triangolo t1 = new Triangolo(1.0, 1.5, 1.5, 2.0);
         System.out.printf("L'area del triangolo è pari a %f.\n", t1.computeArea());
         System.out.printf("Il perimetro del triangolo è pari a %f.\n", t1.computePerimeter());
 
-        Triangolo t2 = new Triangolo(2.0, 3.0, 3.0);
+        Triangolo t2 = new Triangolo(2.0, 3.0, 3.0, 2.0);
         System.out.printf("L'area del triangolo è pari a %f.\n", t2.computeArea());
         System.out.printf("Il perimetro del triangolo è pari a %f.\n", t2.computePerimeter());
 
@@ -56,7 +56,7 @@ public class TestMasterShape {
         System.out.printf("La somma dei perimetri è pari a: %f.\n", sommaP);
 
         // prova metodi Test
-        if(Triangolo.isATriangle(5,4,2))
+        if(Triangolo.isATriangle(5,4,2, 1.5198684))
             System.out.println("Sì, è un triangolo");
         else
             System.out.println("No, non è un triangolo");

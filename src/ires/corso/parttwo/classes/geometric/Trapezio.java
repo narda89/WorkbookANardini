@@ -22,14 +22,9 @@ public class Trapezio extends MasterShape {
     public static boolean isATrapezio (double bMaj, double bMin, double altezza, double cateto1, double cateto2) {
         if ( !(bMaj > 0 && bMin > 0 && altezza > 0 && cateto1 > 0 && cateto2 >0) )
             return false;
-        if( !(Triangolo.isATriangle(bMaj - bMin, cateto1, cateto2)) )
+        if( !(Triangolo.isATriangle(bMaj - bMin, cateto1, cateto2, altezza)) )
             return false;
-        //faccio un'approssimazione ragionevole; lavorando coi double è difficile che i valori vengano esattamente gli
-        //stessi, quindi non posso applicare l'operatore !=
-        if ( ((Triangolo.computeArea(bMaj - bMin, cateto1, cateto2)) / (bMaj - bMin) ) - altezza > 0.01) {
-            //System.out.printf("calcolo = %f - altezza = %f\n",(2 * Triangolo.computeArea(bMaj - bMin, cateto1, cateto2)) / (bMaj - bMin), altezza);
-            return false;
-        }
+
         return true;
     }
 
