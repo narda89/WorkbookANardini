@@ -10,12 +10,12 @@ public class ToDoManager
 {
 
     public static void createNewToDo() throws ParseException {
-        String myTitle;
-        String myDescription;
-        ToDo.Priority myPriority;
-        ToDo.Status myStatus;
-        Date myStartDate;
-        Date myEndDate;
+        String myTitle = null;
+        String myDescription = null;
+        ToDo.Priority myPriority = null;
+        ToDo.Status myStatus = null;
+        Date myStartDate = null;
+        Date myEndDate = null;
 
         Scanner scan = new Scanner(System.in);
         int idNew = 0;
@@ -36,14 +36,43 @@ public class ToDoManager
         myTitle = scan.nextLine();
         System.out.println("Insert description: ");
         myDescription = scan.nextLine();
-        System.out.println("Insert priority: ");
-        myPriority = ToDo.Priority.valueOf(scan.nextLine());
+
+
+        try {
+            System.out.println("Insert priority: ");
+            myPriority = ToDo.Priority.valueOf(scan.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid input.Please insert valid priority (S, A, B, C, D)");
+            System.out.println("Creation failed");
+            return; // brutal
+        }
+
         System.out.println("Insert status: ");
-        myStatus = ToDo.Status.valueOf(scan.nextLine());
+        try {
+            myStatus = ToDo.Status.valueOf(scan.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid input.Please insert valid status (DA_FARE, ANNULLATO, IN ESECUZIONE, COMPLETATO)");
+            System.out.println("Creation failed");
+            return; // brutal
+        }
+
         System.out.println("Insert starting date: ");
-        myStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+        try {
+            myStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid input.Please insert date in dd/MM/yyyy format");
+            System.out.println("Creation failed");
+            return; // brutal
+        }
+
         System.out.println("Insert due date: ");
-        myEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+        try {
+            myEndDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+        } catch (Exception e) {
+            System.out.println("Invalid input.Please insert date in dd/MM/yyyy format");
+            System.out.println("Creation failed");
+            return; // brutal
+        }
 
         ToDo myTd = new ToDo(idNew, myTitle, myDescription, myPriority, myStatus, myStartDate, myEndDate);
         ToDoRepository.add(myTd);
@@ -190,29 +219,45 @@ public class ToDoManager
 
             } else if (choice.equals("3")) {
                 System.out.printf("Enter new priority (old priority -> %s):\n", td.getToDoPriority());
-                td.setToDoPriority(ToDo.Priority.valueOf(scan.nextLine()));
-                ToDoRepository.add(td);
-                System.out.println("ToDo priority updated!");
+                try {
+                    td.setToDoPriority(ToDo.Priority.valueOf(scan.nextLine()));
+                    ToDoRepository.add(td);
+                    System.out.println("ToDo priority updated!");
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please insert valid priority (S, A, B, C, D)");
+                }
 
             } else if (choice.equals("4")) {
                 System.out.printf("Enter new priority (old priority -> %s):\n", td.getToDoStatus());
-                td.setToDoStatus(ToDo.Status.valueOf(scan.nextLine()));
-                ToDoRepository.add(td);
-                System.out.println("ToDo status updated!");
+                try {
+                    td.setToDoStatus(ToDo.Status.valueOf(scan.nextLine()));
+                    ToDoRepository.add(td);
+                    System.out.println("ToDo status updated!");
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please insert valid status (DA_FARE, ANNULLATO, IN ESECUZIONE, COMPLETATO)");
+                }
 
             } else if (choice.equals("5")) {
                 System.out.printf("Enter new start date (old priority -> %s):\n", td.getStartDate());
-                Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
-                td.setStartDate(toModifyStartDate);
-                ToDoRepository.add(td);
-                System.out.println("ToDo starting date added");
+                try {
+                    Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+                    td.setStartDate(toModifyStartDate);
+                    ToDoRepository.add(td);
+                    System.out.println("ToDo starting date added");
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please insert date in dd/MM/yyyy format");
+                }
 
             } else if (choice.equals("6")) {
                 System.out.printf("Enter new due date (old priority -> %s):\n", td.getStartDate());
-                Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
-                td.setEndDate(toModifyStartDate);
-                ToDoRepository.add(td);
-                System.out.println("ToDo due date added");
+                try {
+                    Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+                    td.setEndDate(toModifyStartDate);
+                    ToDoRepository.add(td);
+                    System.out.println("ToDo due date added");
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please insert date in dd/MM/yyyy format");
+                }
 
             } else
                 System.out.println("Invalid input. Please insert valid input.");
