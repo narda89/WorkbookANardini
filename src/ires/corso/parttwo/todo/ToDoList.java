@@ -55,17 +55,16 @@ public class ToDoList
 
     public static void viewByAscendindDueDate() {
         Date[] dates = new Date[ToDoRepository.repoSize()];
-        HashMap<Date, ToDo> toBeOrdered = new HashMap<>();
+        HashMap<ToDo, Date> toBeOrdered = new HashMap<>(); // devo invertire to-do e date (perchè Date può ripetersi e in quel caso avverrebe una sovrascrittura
         int j = 0;
         for (Map.Entry<Integer, ToDo> map : ToDoRepository.get_data().entrySet()) {
             dates[j] = new Date(map.getValue().getEndDate().getTime());
-            toBeOrdered.put(dates[j], map.getValue());
+            toBeOrdered.put(map.getValue(), dates[j]);
             j++;
         }
-        Arrays.sort(dates);
 
         for(Date d: dates)
-            toBeOrdered.get(d).prettyPrint();
+            viewByEndDate(d);
     }
 
     static void showBySubMenu() throws ParseException {
