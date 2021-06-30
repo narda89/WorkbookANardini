@@ -6,16 +6,13 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-// GRUPPO 4:
-public class ToDoRepository implements Serializable // sono un pirla e non ho usato il serializable
+public class ToDoRepository implements Serializable
 {
     /* GESTORE DELL'ARCHIVIO DEI TO-DO == DATABASE */
-
     // Contiene una HashMap di tutti i TO-DO a sistema:
     // - conversione della HashMap in formato adatto al salvataggio su file
     // - conversione in HashMap dei dati letti dal file di input dal metodo di lettura da file
     // - metodi per individuare, aggiungere, eliminare un TO-DO
-
     // Serializzabile con la funzione writeObject()
 
     static Map<Integer, ToDo> _data = new HashMap<>();
@@ -96,15 +93,5 @@ public class ToDoRepository implements Serializable // sono un pirla e non ho us
 
     public static void add(ToDo t) {
         _data.put(t.getToDoID(),t);
-        // si deve entrare nell'oggetto t e leggere il suo ID
-        // per poi salvarlo nella mappa correttamente (con put(ID, t))
-    }
-
-    // in realtà basta fare add di un To-Do modificato (fornisco la copia, la modifico, la sovrascrivo nel
-    // database originale col metodo add (che usa put)
-    public void update(ToDo t) {
-        // si prende l'ID dall'oggetto t
-        // si recupera dalla mappa il TO-DO corrispondente con get(t), per controllo
-        // si sostituisce con put(ID, t)
     }
 }

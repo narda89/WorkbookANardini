@@ -18,14 +18,14 @@ public class ToDoImportExport
         String choice = null;
         do {
             System.out.println( "---------------------------------------------------\n" +
-                    "|                Import/Export menu               |\n" +
-                    "---------------------------------------------------\n");
+                                "|                Import/Export menu               |\n" +
+                                "---------------------------------------------------\n");
 
             Scanner scan = new Scanner(System.in);
 
-            System.out.printf(  "[1] Import from file\n" +
-                    "[2] Export to file\n" +
-                    "[3] Back\n");
+            System.out.printf(  "[1] Import from file\n"    +
+                                "[2] Export to file\n"      +
+                                "[3] Back\n"                );
 
             choice = scan.nextLine();
 

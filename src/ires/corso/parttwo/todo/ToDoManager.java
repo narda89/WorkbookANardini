@@ -82,8 +82,8 @@ public class ToDoManager
     public static void deleteToDo() {
         String choice = null;
         do {
-            System.out.printf(  " [1] Delete\n"   +
-                    " [2] Back\n");
+            System.out.printf(  " [1] Delete\n"     +
+                                " [2] Back\n"       );
 
             Scanner scan = new Scanner(System.in);
             choice = scan.nextLine();
@@ -192,13 +192,13 @@ public class ToDoManager
         String choice = null;
 
         do {
-            System.out.printf(  "[1] Edit title\n" +
-                                "[2] Edit description\n" +
-                                "[3] Edit priority\n" +
-                                "[4] Edit status\n" +
-                                "[5] Edit start date\n" +
-                                "[6] Edit due date\n" +
-                                "[7] Back\n");
+            System.out.printf(  "[1] Edit title\n"          +
+                                "[2] Edit description\n"    +
+                                "[3] Edit priority\n"       +
+                                "[4] Edit status\n"         +
+                                "[5] Edit start date\n"     +
+                                "[6] Edit due date\n"       +
+                                "[7] Back\n"                );
 
             Scanner scan = new Scanner(System.in);
             choice = scan.nextLine();

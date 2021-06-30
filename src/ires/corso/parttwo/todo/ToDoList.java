@@ -74,12 +74,12 @@ public class ToDoList
 
             Scanner scan = new Scanner(System.in);
 
-            System.out.printf(  "[1] Priority\n"    +
-                                "[2] Status\n"      +
-                                "[3] Due date\n"    +
-                                "[4] Specific ID\n" +
-                                "[5] Ascending due date\n"+
-                                "[6] Back\n");
+            System.out.printf(  "[1] Priority\n"            +
+                                "[2] Status\n"              +
+                                "[3] Due date\n"            +
+                                "[4] Specific ID\n"         +
+                                "[5] Ascending due date\n"  +
+                                "[6] Back\n"                );
 
             choice = scan.nextLine();
 
