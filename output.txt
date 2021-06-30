@@ -3,5 +3,5 @@
 3|Titolo3|Descrizione3|C|DA_FARE|03/02/2020|22/10/2021
 4|Titolo4|Descrizione4|B|COMPLETATO|25/11/2021|22/02/2021
 5|Titolo5|Descrizione5|B|ANNULLATO|17/07/2017|22/10/2018
-6|Titolo6|Descrizione6|D|DA_FARE|22/10/2018|22/10/2021
-7|ProvaAdd|ciao|B|DA_FARE|22/07/2021|22/10/2021
+6|Titolo6modificato|Descrizione6|S|DA_FARE|22/10/2018|22/10/2021
+7|roba aggiunta|blabla|S|DA_FARE|22/07/2021|22/10/2021

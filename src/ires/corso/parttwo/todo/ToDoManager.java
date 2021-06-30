@@ -47,6 +47,7 @@ public class ToDoManager
 
         ToDo myTd = new ToDo(idNew, myTitle, myDescription, myPriority, myStatus, myStartDate, myEndDate);
         ToDoRepository.add(myTd);
+        System.out.println("ToDo Added");
     }
 
     public static void deleteToDo() {
@@ -84,7 +85,7 @@ public class ToDoManager
         } while(!(choice.equals("2")));
     }
 
-    public static void updateToDo() {
+    public static void updateToDo() throws ParseException {
         String choice = null;
         do {
             System.out.printf(  " [1] Update\n"   +
@@ -158,7 +159,7 @@ public class ToDoManager
         return;
     }
 
-    public static void toDoManagerSubMenu(ToDo td) {
+    public static void toDoManagerSubMenu(ToDo td) throws ParseException {
         String choice = null;
 
         do {
@@ -177,26 +178,46 @@ public class ToDoManager
                 return;
             else if (choice.equals("1")) {
                 System.out.printf("Enter new title (old title -> %s):\n", td.getToDoTitle());
+                td.setToDoTitle(scan.nextLine());
+                ToDoRepository.add(td);
+                System.out.println("ToDo title updated!");
 
             } else if (choice.equals("2")) {
                 System.out.printf("Enter new description (old description -> %s):\n", td.getToDoDescription());
+                td.setToDoDescription(scan.nextLine());
+                ToDoRepository.add(td);
+                System.out.println("ToDo description updated!");
 
             } else if (choice.equals("3")) {
                 System.out.printf("Enter new priority (old priority -> %s):\n", td.getToDoPriority());
+                td.setToDoPriority(ToDo.Priority.valueOf(scan.nextLine()));
+                ToDoRepository.add(td);
+                System.out.println("ToDo priority updated!");
 
             } else if (choice.equals("4")) {
                 System.out.printf("Enter new priority (old priority -> %s):\n", td.getToDoStatus());
+                td.setToDoStatus(ToDo.Status.valueOf(scan.nextLine()));
+                ToDoRepository.add(td);
+                System.out.println("ToDo status updated!");
 
             } else if (choice.equals("5")) {
-                System.out.printf("Enter new priority (old priority -> %s):\n", td.getStartDate());
+                System.out.printf("Enter new start date (old priority -> %s):\n", td.getStartDate());
+                Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+                td.setStartDate(toModifyStartDate);
+                ToDoRepository.add(td);
+                System.out.println("ToDo starting date added");
 
             } else if (choice.equals("6")) {
-                System.out.printf("Enter new priority (old priority -> %s):\n", td.getEndDate());
+                System.out.printf("Enter new due date (old priority -> %s):\n", td.getStartDate());
+                Date toModifyStartDate = new SimpleDateFormat("dd/MM/yyyy").parse(scan.nextLine());
+                td.setEndDate(toModifyStartDate);
+                ToDoRepository.add(td);
+                System.out.println("ToDo due date added");
 
             } else
                 System.out.println("Invalid input. Please insert valid input.");
 
-        }while(!(choice.equals("7")));
+        } while(!(choice.equals("7")));
 
     }
 }

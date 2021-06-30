@@ -96,7 +96,6 @@ public class ToDoRepository implements Serializable // sono un pirla e non ho us
 
     public static void add(ToDo t) {
         _data.put(t.getToDoID(),t);
-        System.out.println("ToDo added to list.");
         // si deve entrare nell'oggetto t e leggere il suo ID
         // per poi salvarlo nella mappa correttamente (con put(ID, t))
     }
