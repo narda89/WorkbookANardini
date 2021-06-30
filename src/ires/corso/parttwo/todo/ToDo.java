@@ -49,6 +49,10 @@ public class ToDo implements Serializable
 
     }
 
+    public int getToDoID() {
+        return toDoID;
+    }
+
     public String getToDoTitle() {
         return toDoTitle;
     }
