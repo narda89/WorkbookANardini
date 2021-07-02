@@ -9,7 +9,7 @@ public class TestLambda {
 
     public static void main(String[] args) {
 
-        //// PRIMO ESERCIZIO
+        //// PRIMO ESERCIZIO ////
 
         List<String> names = new ArrayList<>(Arrays.asList("Alberto","Niki", "Alessandro", "Alessio", "Veronica", "Pio",
                 "Agnese","Stefano","Anna","AbbiamoPochePersoneAventiNomeCorto"));
@@ -22,7 +22,7 @@ public class TestLambda {
                 .map( n -> n.toUpperCase())
                 .forEach(System.out::println);
 
-        //// SECONDO ESERCIZIO
+        //// SECONDO ESERCIZIO ////
 
         Scanner scan = new Scanner(System.in);
         System.out.println( "Inserisci un po' di numeri interi, >0, separandoli con la virgola:");
