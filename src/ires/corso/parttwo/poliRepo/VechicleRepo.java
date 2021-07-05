@@ -42,4 +42,43 @@ public class VechicleRepo
         }
         return repo;
     }
+
+    public ArrayList<Car> returnOnlyCars() {
+        ArrayList<Car> cars = new ArrayList<>();
+        for (Vehicle v : veicoli) {
+            if (v instanceof Car)
+                cars.add((Car)v);
+        }
+
+        for(Car c : cars)
+            c.prettyPrint();
+
+        return cars;
+    }
+
+    public ArrayList<Truck> returnOnlyTrucks() {
+        ArrayList<Truck> trucks = new ArrayList<>();
+        for (Vehicle v : veicoli) {
+            if (v instanceof Truck)
+                trucks.add((Truck)v);
+        }
+
+        for(Truck t : trucks)
+            t.prettyPrint();
+
+        return trucks;
+    }
+
+    public ArrayList<Motorbike> returnOnlyMotorbikes() {
+        ArrayList<Motorbike> bikes = new ArrayList<>();
+        for (Vehicle v : veicoli) {
+            if (v instanceof Motorbike)
+                bikes.add((Motorbike) v);
+        }
+
+        for(Motorbike b : bikes)
+            b.prettyPrint();
+
+        return bikes;
+    }
 }

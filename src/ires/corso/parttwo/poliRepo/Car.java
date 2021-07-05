@@ -20,6 +20,6 @@ public class Car
 
     @Override
     public void prettyPrint() {
-        System.out.println("CAR" + getTipoAuto());
+        System.out.println("CAR - " + super.getTarga() + " - " +  super.getNumeroRuote() + " - " + getTipoAuto());
     }
 }

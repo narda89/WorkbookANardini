@@ -18,6 +18,6 @@ public class Truck
 
     @Override
     public void prettyPrint() {
-        System.out.println("TRUCK" + getVolumeRimorchio());
+        System.out.println("TRUCK - " + super.getTarga() + " - " + super.getNumeroRuote() + " - " + getVolumeRimorchio());
     }
 }

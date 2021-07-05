@@ -18,6 +18,6 @@ public class Motorbike
 
     @Override
     public void prettyPrint() {
-        System.out.println("BIKE" + getTipo());
+        System.out.println("BIKE - " + super.getTarga() + " - " + super.getNumeroRuote() + " - " + getTipo());
     }
 }

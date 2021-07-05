@@ -13,6 +13,14 @@ public abstract class Vehicle
         this.numeroRuote = numeroRuote;
     }
 
+    public String getTarga() {
+        return targa;
+    }
+
+    public int getNumeroRuote() {
+        return numeroRuote;
+    }
+
     public abstract void prettyPrint();
 
 
