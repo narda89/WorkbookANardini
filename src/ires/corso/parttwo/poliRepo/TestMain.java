@@ -1,7 +1,6 @@
 package ires.corso.parttwo.poliRepo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TestMain {
     public static void main(String[] args) {
