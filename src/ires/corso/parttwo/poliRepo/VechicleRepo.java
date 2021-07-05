@@ -5,15 +5,47 @@ import java.util.ArrayList;
 
 public class VechicleRepo
         implements Serializable {
-    private ArrayList<? extends Vehicle> veicoli = null;
 
-    public VechicleRepo(ArrayList<? extends Vehicle> veicoli) {
+    private ArrayList<Vehicle> veicoli = new ArrayList<>();
+
+    public VechicleRepo(ArrayList<Vehicle> veicoli) {
         this.veicoli = veicoli;
     }
 
     public void prettyPrint() {
         for (Vehicle v : veicoli)
             v.prettyPrint();
+    }
+
+    public void add(Vehicle v) {
+        veicoli.add(v);
+    }
+
+    // come key potrei usare la targa
+    public void delete(String targa) {
+        boolean vehicleFound = false;
+        for (Vehicle v : veicoli) {
+            if (v.getTarga().equals(targa)) {
+                vehicleFound = true;
+                veicoli.remove(v);
+                System.out.println("Veicolo avente targa " + targa + " rimosso dalla repository.");
+                return;
+            }
+        }
+        if(!vehicleFound)
+            System.out.println("Non è stato trovato alcun veicolo avente targa " + targa);
+    }
+
+    public void swap(Vehicle vNew, String targa) {
+        for(Vehicle v : veicoli) {
+            if(v.getTarga().equals(targa)) {
+                veicoli.remove(v);
+                veicoli.add(vNew);
+                System.out.println("Sostituzione effettuata!");
+                return;
+            }
+        }
+        System.out.println("Nessun veicolo avente targa " + targa + " trovato in repository. Swap non effettuato.");
     }
 
     public void SerializeRepo() {
@@ -34,8 +66,8 @@ public class VechicleRepo
         VechicleRepo repo = null;
         try {
             objIn = new ObjectInputStream(new FileInputStream("VehicleRepo.ser"));
-            ArrayList<? extends Vehicle> veicoli = new ArrayList<>();
-            veicoli = (ArrayList<? extends Vehicle>)objIn.readObject();
+            ArrayList<Vehicle> veicoli = new ArrayList<>();
+            veicoli = (ArrayList<Vehicle>)objIn.readObject();
             repo = new VechicleRepo(veicoli);
         } catch (Exception e) {
             System.out.println(e);
