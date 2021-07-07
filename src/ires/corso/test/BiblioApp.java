@@ -10,10 +10,15 @@ import java.util.Date;
 public class BiblioApp {
     public static void main(String[] args) throws ParseException, IOException {
 
-
+        //// NOTA: /////////////////////////////////////////////////////////////////////////////////////////////////////
+        // per come è fatto l'add dentro alla repository Biblioteca, l'isbn funziona come identificatore univoco dei  //
+        // libri. Se si prova ad aggiungere a mano o ad importare libri aventi isbn già in repository, quei libri non //
+        // vengono importati e compare il messaggio di fail del metodo add della repo.                                //
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         Biblioteca biblio = new Biblioteca();
 
+        // ROBA PER BOOTSTRAP SE NON SI VUOLE DESERIALIZZARE ///////////////////////////////////////////////////////////
 
         String sData = "15/07/1980";
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
@@ -25,8 +30,7 @@ public class BiblioApp {
 
         Libro l3 = new Libro("BTitolo3","Autore3", "Sinossi3", "ISBN3", d, Libro.Genere.GIALLO);
         biblio.addBook(l3);
-
-
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
         //// MENU IMPORT / EXPORT //////////////////////////////////////////////////////////////////////////////////////
@@ -58,8 +62,15 @@ public class BiblioApp {
                 e.printStackTrace();
             }
         });
+        MenuElement BM5 = new MenuElement("E", "Modifica dati libro", () -> {
+            try {
+                BookManager.modifyBook(biblio);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        });
 
-        Menu BiblioManager = new Menu("Book Manager", new ArrayList<>(Arrays.asList(BM1,BM2, BM3, BM4)));
+        Menu BiblioManager = new Menu("Book Manager", new ArrayList<>(Arrays.asList(BM1,BM2, BM3, BM4, BM5)));
 
 
         //// MENU PRINCIPALE ///////////////////////////////////////////////////////////////////////////////////////////
@@ -70,25 +81,5 @@ public class BiblioApp {
         Menu MainMenu = new Menu("Main menu", new ArrayList<>(Arrays.asList(MP1, MP2, MP3)));
 
         MainMenu.runMenu();
-
-        /*
-        String sData = "15/07/1980";
-        Date d = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
-        Libro l1 = new Libro("Titolo1","Autore1", "Sinossi1", "ISBN1", d, Libro.Genere.AVVENTURA);
-        biblio.addBook(l1);
-        Libro l2 = new Libro("Titolo2","Autore2", "Sinossi2", "ISBN2", d, Libro.Genere.GIALLO);
-        biblio.addBook(l2);
-        */
-
-
-        ImportExport.deSerializeBiblio(biblio);
-
-        for (Libro l : biblio.getLibri())
-            System.out.println(l.getISBN());
-
-        ImportExport.exportNIOBiblio(biblio);
-
-        //ImportExport.SerializeBiblio(biblio);
-
     }
 }

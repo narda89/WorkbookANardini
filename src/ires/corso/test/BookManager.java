@@ -6,13 +6,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class BookManager {
-    public void addNewBook(Biblioteca biblio) throws ParseException {
-        String sData = "15/07/1980";
-        Date d = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
-        Libro l = new Libro("Titolo","Autore", "Sinossi", "ISBN", d, Libro.Genere.AVVENTURA);
-        biblio.addBook(l);
-        System.out.println("Libro aggiunto!");
-    }
 
     public static void addBook(Biblioteca biblio) throws ParseException {
         Scanner scan = new Scanner(System.in);
@@ -121,5 +114,81 @@ public class BookManager {
             return;
         }
 
+    }
+
+    public static void modifyBook(Biblioteca biblio) throws ParseException {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Ok, intanto dammi un isbn");
+        String isbn = scan.nextLine();
+        if(!(biblio.ISBNpresent(isbn))) {
+            System.out.println("Libro non trovato in biblioteca");
+            return;
+        } else {
+            System.out.println("Ok, trovato. Cosa vuoi modificare?\n" +
+                    "(titolo, autore, sinossi, dataPubblicazione, genere\n" +
+                    "devi proprio scriver 'titolo' o 'autore' ecc...");
+
+            String userInput = scan.nextLine();
+
+            if (userInput.equals("titolo")) {
+                // modifica titolo
+                for (Libro l : biblio.getLibri()) {
+                    if (l.getISBN().equals(isbn)) {
+                        System.out.println("Inserisci nuovo titolo");
+                        l.setTitolo(scan.nextLine());
+                        System.out.println("Titolo aggiornato!");
+                        return;
+                    }
+                }
+            } else if (userInput.equals("autore")) {
+                // modifica autore
+                for (Libro l : biblio.getLibri()) {
+                    if (l.getISBN().equals(isbn)) {
+                        System.out.println("Inserisci nuovo autore");
+                        l.setAutore(scan.nextLine());
+                        System.out.println("Autore aggiornato!");
+                        return;
+                    }
+                }
+
+            } else if (userInput.equals("sinossi")) {
+                // modifica sinossi
+                for (Libro l : biblio.getLibri()) {
+                    if (l.getISBN().equals(isbn)) {
+                        System.out.println("Inserisci nuova sinossi");
+                        l.setSinossi(scan.nextLine());
+                        System.out.println("Sinossi aggiornata!");
+                        return;
+                    }
+                }
+
+            } else if (userInput.equals("dataPubblicazione")) {
+                // modifico data pubblicazione
+                for (Libro l : biblio.getLibri()) {
+                    if (l.getISBN().equals(isbn)) {
+                        System.out.println("Inserisci nuova data pubblicazione");
+                        String sData = scan.nextLine();
+                        Date data = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
+                        l.setDataPubblicazione(data);
+                        System.out.println("Data aggiornata!");
+                        return;
+                    }
+                }
+            }else if (userInput.equals("genere")) {
+                // modifica genere
+                for (Libro l : biblio.getLibri()) {
+                    if (l.getISBN().equals(isbn)) {
+                        System.out.println("Inserisci nuovo genere");
+                        l.setGenereLibro(Libro.Genere.valueOf(scan.nextLine()));
+                        System.out.println("Genere aggiornato!");
+                        return;
+                    }
+                }
+            } else {
+                // input non riconosciuto
+                System.out.println("Input non riconosciuto, sorry.");
+                return;
+            }
+        }
     }
 }
