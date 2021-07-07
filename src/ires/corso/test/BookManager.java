@@ -11,6 +11,38 @@ public class BookManager {
         Date d = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
         Libro l = new Libro("Titolo","Autore", "Sinossi", "ISBN", d, Libro.Genere.AVVENTURA);
         biblio.addBook(l);
+        System.out.println("Libro aggiunto!");
+    }
+
+    public static void addBook(Biblioteca biblio) throws ParseException {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("Inserisci ISBN");
+        String isbn = scan.nextLine();
+        if(biblio.ISBNpresent(isbn)) {
+            System.out.println("Spiacente, il libro è già in libreria");
+            return;
+        }
+
+        System.out.println("Inserisci titolo:");
+        String titolo = scan.nextLine();
+
+        System.out.println("Inserisci autore:");;
+        String autore = scan.nextLine();
+
+        System.out.println("Inserisci sinossi:");
+        String sinossi = scan.nextLine();
+
+        System.out.println("Inserisci data:");
+        String sData = scan.nextLine();
+        Date data = new SimpleDateFormat("dd/MM/yyyy").parse(sData);
+
+        System.out.println("Inserisci genere:");
+        Libro.Genere genere = Libro.Genere.valueOf(scan.nextLine());
+
+        Libro l = new Libro(titolo, autore, sinossi, isbn, data, genere);
+
+        biblio.addBook(l);
     }
 
     public static void updateReadStatus(Biblioteca biblio) {

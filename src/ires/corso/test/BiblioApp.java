@@ -51,8 +51,15 @@ public class BiblioApp {
         MenuElement BM1 = new MenuElement("A", "Aggiorna avanzamento Lettura", () ->BookManager.updateReadStatus(biblio));
         MenuElement BM2 = new MenuElement("B", "Rimuovi libro", () -> BookManager.deleteBook(biblio));
         MenuElement BM3 = new MenuElement("C", "Valuta libro", () -> BookManager.evaluateBook(biblio));
+        MenuElement BM4 = new MenuElement("D", "Aggiungi libro", () -> {
+            try {
+                BookManager.addBook(biblio);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        });
 
-        Menu BiblioManager = new Menu("Book Manager", new ArrayList<>(Arrays.asList(BM1,BM2, BM3)));
+        Menu BiblioManager = new Menu("Book Manager", new ArrayList<>(Arrays.asList(BM1,BM2, BM3, BM4)));
 
 
         //// MENU PRINCIPALE ///////////////////////////////////////////////////////////////////////////////////////////
